@@ -1,0 +1,264 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "operational": {
+            "type": "object",
+            "id": "http://jsonschema.net/operational",
+            "required": false,
+            "description": "Details of operational attributes.",
+            "properties": {
+                "isMarkForDelete": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/operational/isMarkForDelete",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is marked for delete. Sparsely populated. This data will not be populated for marketplace items from 7/24 onwards; i.e. the marketplace products will be hard deleted"
+                },
+                "sites": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/operational/sites",
+                    "required": false,
+                    "description": "Gives site specific operational attributes.",
+                    "properties": {
+                        "mygofer": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/operational/sites/mygofer",
+                            "required": false,
+                            "description": "Gives site specific operational attributes.",
+                            "properties": {
+                                "firstOnlineDt": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/operational/sites/mygofer/firstOnlineDt",
+                                    "required": false,
+                                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). The first online date of the product. Sparsely populated."
+                                },
+                                "isAvail": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/mygofer/isAvail",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is in stock in mygofer"
+                                },
+                                "isOnline": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/mygofer/isOnline",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is online in mygofer."
+                                }
+                            }
+                        },
+                        "sears": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/operational/sites/sears",
+                            "required": false,
+                            "description": "Lists the operational attributes specific to sears.",
+                            "properties": {
+                                "firstOnlineDt": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/operational/sites/sears/firstOnlineDt",
+                                    "required": false,
+                                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). The date when the item came online for the first time. Sparsely populated."
+                                },
+                                "invThreshold": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/operational/sites/sears/invThreshold",
+                                    "required": false,
+                                    "description": "Inventory threshold value."
+                                },
+                                "isAvail": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/sears/isAvail",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is in stock."
+                                },
+                                "isOnline": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/sears/isOnline",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is online."
+                                }
+                            }
+                        },
+                        "kmart": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/operational/sites/kmart",
+                            "required": false,
+                            "description": "Gives site specific operational attributes.",
+                            "properties": {
+                                "firstOnlineDt": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/operational/sites/kmart/firstOnlineDt",
+                                    "required": false,
+                                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). The first online date of the product. Sparsely populated."
+                                },
+                                "invThreshold": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/operational/sites/kmart/invThreshold",
+                                    "required": false,
+                                    "description": "Inventory threshold value."
+                                },
+                                "isAvail": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/kmart/isAvail",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is in stock in kmart"
+                                },
+                                "isOnline": {
+                                    "type": "boolean",
+                                    "id": "http://jsonschema.net/operational/sites/kmart/isOnline",
+                                    "required": true,
+                                    "description": "Boolean value indicating if the item is online in kmart."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "dispTags": {
+            "type": "object",
+            "id": "http://jsonschema.net/dispTags",
+            "required": false,
+            "description": "List of display attributes of the item",
+            "properties": {
+                "isNddInelig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isNddInelig",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is NDD ineligible. Sparsely populated"
+                },
+                "isPremShipElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isPremShipElig",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is eligible for premium shipping. Sparsely populated"
+                },
+                "isExpressCheckoutElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isExpressCheckoutElig",
+                    "required": false,
+                    "description": "Boolean value determining if product is eligible for express checkout. Sparsely populated"
+                },
+                "isClickToTalkElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isClickToTalkElig",
+                    "required": false,
+                    "description": "Boolean value determining if product is eligible for clickToTalk. Sparsely populated"
+                },
+                "isGiftWrapElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isGftWrapElig",
+                    "required": false,
+                    "description": "Boolean value determining if product is eligible for gift wrap. Sparsely populated"
+                },
+                "isInstallable": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isInstallable",
+                    "required": false,
+                    "description": "Determines if the item is installable. Sparsely populated"
+                },
+                "deluxOpt": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/dispTags/deluxOpt",
+                    "required": false,
+                    "description": "List of delux options also known as special configurations",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/dispTags/deluxOpt/0",
+                        "required": true,
+                        "description": "Details of each delux option",
+                        "properties": {
+                            "questTxt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/deluxOpt/0/questTxt",
+                                "required": false,
+                                "description": "Question text for the delux option"
+                            },
+                            "questScimCd": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/deluxOpt/0/questScimCd",
+                                "required": false,
+                                "description": "Question scim code"
+                            },
+                            "dispType": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/deluxOpt/0/dispType",
+                                "required": false,
+                                "description": "Display type of the delux option "
+                            }
+                        }
+                    }
+                },
+                "isHaulawayElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isHaulawayElig",
+                    "required": false,
+                    "description": "Determines if the item is eligible for haul away or not. If the div-line for the given item is not part of the Haul away exclusion div-line list, the product is set as Haulaway eligible. For an item enabled for this flag, Sears can haul away your personal item you're replacing for an additional charge of $10 per item."
+                },
+                "warrantyIndicator": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/warrantyIndicator",
+                    "required": false,
+                    "description": "If the indicator is set, item is eligible for Smart Plan."
+                },
+                "isOutletItem": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isOutletItem",
+                    "required": false,
+                    "description": "Tells whether the item is an outlet item or not."
+                },
+                "isDontDisplay": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isDontDisplay",
+                    "required": false,
+                    "description": "Online page will not be displayed if this attribute is set."
+                },
+                "isZipcodePriced": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isZipcodePriced",
+                    "required": false,
+                    "description": "If this attribute is set, the price is displayed based on the zipcode entered for automotive items."
+                },
+                "wcsLayOut": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/dispTags/wcsLayOut",
+                    "required": false,
+                    "description": "Flag used to redirect new pdp to old pdp for sears and kmart items."
+                },
+                "isGiftMsgElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isGiftMsgElig",
+                    "required": false,
+                    "description": "Indicates whether the item is eligible for gift messaging or not."
+                }
+            }
+        },
+        "presell": {
+            "type": "object",
+            "id": "http://jsonschema.net/presell",
+            "required": false,
+            "description": "Presell details of the product.",
+            "properties": {
+                "qty": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/presell/qty",
+                    "required": false,
+                    "description": "Quantity available to presell."
+                },
+                "streetDt": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/presell/streetDt",
+                    "required": false,
+                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). The date till which the item is eligible for presell."
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,493 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "wcsId": {
+            "type": "number",
+            "id": "http://jsonschema.net/wcsId",
+            "required": false,
+            "description": "WCS Id."
+        },
+        "parentId": {
+            "type": "string",
+            "id": "http://jsonschema.net/parentId",
+            "required": true,
+            "description": "Parent product Id."
+        },
+        "wcsParentId": {
+            "type": "number",
+            "id": "http://jsonschema.net/wcsParentId",
+            "required": false,
+            "description": "WCS Id of the parent."
+        },
+        "classifications": {
+            "type": "object",
+            "id": "http://jsonschema.net/classifications",
+            "required": true,
+            "description": "Attributes giving the product type details",
+            "properties": {
+                "catentryType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/classifications/catentryType",
+                    "required": true,
+                    "enum": [
+                        "S"
+                    ],
+                    "description": "The only allowed type is S -> SKUcrossReference"
+                }
+            }
+        },
+        "name": {
+                "type": "string",
+                "id": "http://jsonschema.net/variants/sku/0/name",
+                "required": false,
+                "description": "Sku name."
+        },
+        "desc": {
+            "type": "string",
+            "id": "http://jsonschema.net/variants/sku/0/desc",
+            "required": false,
+            "description": "SKU Description which is populated for UVD items only."
+        },
+        "altIds": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants/sku/0/altIds",
+            "required": false,
+            "description": "Alternate ids for the sku.",
+            "properties": {
+                "catentryId": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/variants/sku/0/altIds/catentryId",
+                    "required": false,
+                    "description": "Catentry Id of the sku."
+                },
+                "ksn": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/variants/sku/0/altIds/ksn",
+                    "required": false,
+                    "description": "ksn of the sku."
+                },
+                "spinId": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/variants/sku/0/altIds/spinId",
+                    "required": false,
+                    "description": "spinId for the item."
+                },
+                "dummyPID": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/altIds/dummyPID",
+                    "required": false,
+                    "description": "Dummy id for the product. The format of the dummy PID is brandcodeid-manufacturerModelno.  "
+                },
+                "imaItemId": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/altIds/imaItemId",
+                    "required": false,
+                    "description": "ImaItemId corresponding to the sku"
+                },
+                "linkedKsn": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/altIds/linkedKsn",
+                    "required": false,
+                    "description": "linked Ksn of the sku which is related to the color swatch image"
+                }
+            }
+        },
+        "upcType": {
+            "type": "number",
+            "id": "http://jsonschema.net/variants/sku/0/altIds/upcType",
+            "required": false,
+            "description": "Upc type."
+        },
+        "upc": {
+            "type": "string",
+            "id": "http://jsonschema.net/variants/sku/0/altIds/upc",
+            "required": false,
+            "description": "UPC code."
+        },
+        "vendorStockNo": {
+            "type": "string",
+            "id": "http://jsonschema.net/variants/sku/0/altIds/vendorStockNo",
+            "required": false,
+            "description": "Vendor stock number."
+        },
+        "condition": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants/sku/0/condition",
+            "required": false,
+            "description": "Gives the details of the condition of the item",
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/variants/sku/0/condition/status",
+                    "required": false,
+                    "description": "It indicates the condition of the sku. Possible values are: Refurbished , Used - General, Used - Like New, Used - Very Good,Used - Good, Used - Acceptable,  Used - Poor. Will not be populated if the value is New"
+                },
+                "comments": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/variants/sku/0/condition/comments",
+                    "required": false,
+                    "description": "Comments related to the condition of the item"
+                },
+                "img": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/variants/sku/0/condition/img",
+                    "required": false,
+                    "description": "Details of condition specific image",
+                    "properties": {
+                      "attrs": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs",
+                        "required": true,
+                        "description": "Attributes related to the condition specific image",
+                        "properties": {
+                          "alt": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs/alt",
+                            "required": false,
+                            "description": "Alternative text to be displayed if image is not available."
+                          },
+                          "height": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs/height",
+                            "required": false,
+                            "description": "Height of the image"
+                          },
+                          "src": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs/src",
+                            "required": true,
+                            "description": "Source url of the image"
+                          },
+                          "title": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs/title",
+                            "required": false,
+                            "description": "Title of the image"
+                          },
+                          "width": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/condition/img/attrs/width",
+                            "required": false,
+                            "description": "Width of the image"
+                          }
+                        }
+                      }
+                    }
+                }
+            }
+        },
+        "mfrPartno": {
+            "type": "string",
+            "id": "http://jsonschema.net/variants/sku/0/mfrPartno",
+            "required": false,
+            "description": "Maufacturer partnumber"
+        },
+        "definingAttrs": {
+            "type": "array",
+            "id": "http://jsonschema.net/variants/sku/0/definingAttrs",
+            "required": false,
+            "description": "List of attributes specific to each sku.  Attributes and Attribute values will be sorted based on the sequence number coming from spin.",
+            "items": {
+                "type": "object",
+                "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0",
+                "required": true,
+                "description": "Details of attribute and attribute-value.",
+                "properties": {
+                  "attr": {
+                     "type": "object",
+                      "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/attr",
+                      "required": false,
+                      "description": "Gives the details of attribute ",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/attr/id",
+                                        "required": false,
+                          "description": "metadata id. This is for internal reference only. Brand will not have id tag."
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/attr/name",
+                          "required": false,
+                          "description": "Attribute name."
+                        }
+                      }
+                    },
+                    "val": {
+                      "type": "object",
+                      "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/val",
+                      "required": false,
+                      "description": "Gives the details of attribute value ",
+                      "properties": {
+                        "id": {
+                          "type": "number",
+                          "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/val/id",
+                          "required": false,
+                          "description": "metadata id of the attributeValue"
+                        },
+                        "name": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/val/name",
+                          "required": false,
+                          "description": "Attribute value name."
+                        },
+                        "familyName": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/definingAttrs/0/val/familyName",
+                          "required": false,
+                          "description": "Family name of the Attribute value. Also knowns as trademarktext."
+                        }
+                      }
+                    }
+                }
+            }
+        },
+        "operational": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants/sku/0/operational",
+            "required": false,
+            "description": "Operational attributes specific to each sku.",
+            "properties": {
+            "maxShipElig": {
+            "type": "string",
+            "id": "http://jsonschema.net/variants/sku/0/operational/maxShipElig",
+            "required": false,
+            "description": "Gives the maximum shipping Eligible value."
+        },
+        "sites": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants/sku/0/operational/sites",
+            "required": true,
+            "description": "Store specific attributes of the sku.",
+            "properties": {
+            "mygofer": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer",
+            "required": false,
+            "description": "Sku attribute details for mygofer store.",
+            "properties": {
+                "isAvail": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer/isAvail",
+                    "required": true,
+                    "description": "Boolean value indicating if the item is in stock in mygofer"
+                },
+                "isOnline": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer/isOnline",
+                    "required": true,
+                    "description": "Boolean value indicating if the item is online in mygofer"
+                },
+                "inactive": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer/inactive",
+                    "required": false,
+                    "description": "Inactive dates of the product. Sparsely populated.",
+                    "properties": {
+                        "endDt": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer/inactive/endDt",
+                                "required": true,
+                                "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Gives the value of inactive end date."
+                        },
+                              "startDt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/variants/sku/0/operational/sites/mygofer/inactive/startDt",
+                                "required": true,
+                                "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Gives the value of inactive start date."
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "sears": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears",
+                        "required": false,
+                        "description": "Sku attribute details for sears store.",
+                        "properties": {
+                          "isAvail": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears/isAvail",
+                            "required": true,
+                            "description": "Boolean value indicating if the item is in stock in sears"
+                          },
+                          "isOnline": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears/isOnline",
+                            "required": true,
+                            "description": "Boolean value indicating if the item is online in sears"
+                          },
+                          "inactive": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears/inactive",
+                            "required": false,
+                            "description": "Inactive dates of the product. Sparsely populated.",
+                            "properties": {
+                              "endDt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears/inactive/endDt",
+                                "required": true,
+                                "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Gives the value of inactive end date."
+                              },
+                              "startDt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/variants/sku/0/operational/sites/sears/inactive/startDt",
+                                "required": true,
+                                "description": "ISO Date Format. Gives the value of inactive start date."
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "kmart": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart",
+                        "required": false,
+                        "description": "Sku attribute details for kmart store.",
+                        "properties": {
+                          "isAvail": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart/isAvail",
+                            "required": true,
+                            "description": "Boolean value indicating if the item is in stock in kmart"
+                          },
+                          "isOnline": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart/isOnline",
+                            "required": true,
+                            "description": "Boolean value indicating if the item is online in kmart"
+                          },
+                          "inactive": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart/inactive",
+                            "required": false,
+                            "description": "Inactive dates of the product. Sparsely populated.",
+                            "properties": {
+                              "endDt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart/inactive/endDt",
+                                "required": true,
+                                "description": "ISO Date Format. Gives the value of inactive end date."
+                              },
+                              "startDt": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/variants/sku/0/operational/sites/kmart/inactive/startDt",
+                                "required": true,
+                                "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Gives the value of inactive start date."
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "alternateImg": {
+                "type": "array",
+                "id": "http://jsonschema.net/variants/sku/0/alternateImg",
+                "required": false,
+                "description": "Alternate image details",
+                "items": {
+                  "type": "object",
+                  "id": "http://jsonschema.net/variants/sku/0/alternateImg/0",
+                  "required": true,
+                  "description": "Specific details on alternate image list.",
+                  "properties": {
+                    "attrs": {
+                      "type": "object",
+                      "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs",
+                      "required": true,
+                      "description": "Attributes specific to alternate image",
+                      "properties": {
+                        "alt": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs/alt",
+                          "required": false,
+                          "description": "Alternate text displayed if image is not available."
+                        },
+                        "height": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs/height",
+                          "required": false,
+                          "description": "Image height."
+                        },
+                        "src": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs/src",
+                          "required": true,
+                          "description": "Image url."
+                        },
+                        "title": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs/title",
+                          "required": false,
+                          "description": "Image titile."
+                        },
+                        "width": {
+                          "type": "string",
+                          "id": "http://jsonschema.net/variants/sku/0/alternateImg/0/attrs/width",
+                          "required": false,
+                          "description": "Image width."
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+        "brandCodeId": {
+                "type": "string",
+                "id": "http://jsonschema.net/variants/sku/0/brandCodeId",
+                "required": false,
+                "description": "The value of brandCodeId"
+        },
+        "sbscrptnPrgm": {
+                "type": "string",
+                "id": "http://jsonschema.net/variants/sku/0/sbscrptnPrgm",
+                "required": false,
+                "description": "Indicates the type of subscription applicable for the item."
+        },
+        "meta": {
+            "type": "object",
+            "id": "http://jsonschema.net/meta",
+            "required": true,
+            "description": "Lists the schema details",
+            "properties": {
+                "createdTimestamp": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/createdTs",
+                    "required": true,
+                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Created Timestamp"
+                },
+                "lastModifiedBy": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/lastModifiedBy",
+                    "required": false,
+                    "description": "Indicates the user who lastly modified"
+                },
+                "modifiedTimestamp": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/modifiedTs",
+                    "required": false,
+                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Modified Timestamp"
+                },
+                "schemaVersion": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/schemaVer",
+                    "required": true,
+                    "description": "Gives the complete svn path to the schema"
+                }
+            }
+        }
+    }
+}

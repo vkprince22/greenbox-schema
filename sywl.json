@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "sywl": {
+            "type": "object",
+            "id": "http://jsonschema.net/sywl",
+            "required": false,
+            "description": "SYWL specific info.",
+            "properties": {
+                "taxCategoryId": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/sywl/taxCategoryId",
+                    "required": false,
+                    "description": "Id specific to the tax category."
+                },
+                "taxRate": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/sywl/taxRate",
+                    "required": false,
+                    "description": "SYWL tax rate.  "
+                },
+                "quantity": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/sywl/quantity",
+                    "required": true,
+                    "description": "Onhand inventory loaded into IMS."
+                },
+                "status": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/sywl/status",
+                    "required": true,
+                    "description": "Item status. 1 --> Online, 0 --> Offline."
+                },
+                "preparationTime": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/sywl/preparationTime",
+                    "required": false,
+                    "description": "Item preparation time.  "
+                }
+            }
+        }
+    }
+}
