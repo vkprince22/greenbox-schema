@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "rebate": {
+            "type": "object",
+            "id": "http://jsonschema.net/rebate",
+            "required": false,
+            "description": "List of rebate ids.",
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/rebate/id",
+                    "required": false,
+                    "description": "Comma separated list of rebate ids."
+                }
+            }
+        }
+    }
+}

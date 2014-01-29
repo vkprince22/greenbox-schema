@@ -1,0 +1,246 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "offer": {
+            "type": "object",
+            "id": "http://jsonschema.net/offer",
+            "required": false,
+            "description": "Lists the various offers present for the item",
+            "properties": {
+                "sites": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/offer/sites",
+                    "required": false,
+                    "description": "Lists the sites with the offers for the item",
+                    "properties": {
+                        "sears": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/offer/sites/sears",
+                            "required": false,
+                            "description": "List the offers present in sears store",
+                            "properties": {
+                                "financing": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/offer/sites/sears/financing",
+                                    "required": false,
+                                    "description": "Lists the details/properties of the finance offers",
+                                    "properties": {
+                                        "delayMonths": {
+                                            "type": "number",
+                                            "id": "http://jsonschema.net/offer/sites/sears/financing/delayMonths",
+                                            "required": false,
+                                            "description": "Integer value indicating the number of months till which finance offer is applicable"
+                                        },
+                                        "desc": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/offer/sites/sears/financing/desc",
+                                            "required": false,
+                                            "description": "String value describing the finance offer"
+                                        },
+                                        "endDt": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/offer/sites/sears/financing/endDt",
+                                            "required": false,
+                                            "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Indicates the date till which the offer is applicable"
+                                        },
+                                        "minPurchaseAmt": {
+                                            "type": "number",
+                                            "id": "http://jsonschema.net/offer/sites/sears/financing/minPurchaseAmt",
+                                            "required": false,
+                                            "description": "Indicates the minimum Purchase Amount eligible for the finance offer"
+                                        }
+                                    }
+                                },
+                                "regulars": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/offer/sites/sears/regulars",
+                                    "required": false,
+                                    "description": "Lists the details/properties of the regular offers",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/offer/sites/sears/regulars/0",
+                                        "required": true,
+                                        "description": "Lists the items applicable under regular category",
+                                        "properties": {
+                                            "details": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/details",
+                                                "required": true,
+                                                "description": "Provides the details of the item"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/title",
+                                                "required": true,
+                                                "description ": "String value indicates the title"
+                                            },
+                                            "promoId": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/promoId",
+                                                "required": false,
+                                                "description": "Promotion ID."
+                                            },
+                                            "promoType": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/promoType",
+                                                "required": false,
+                                                "description": "Type of promotion."
+                                            },
+                                            "freePromoFlag": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/freePromoFlag",
+                                                "required": false,
+                                                "description": "Indicator for free promotion."
+                                            },
+                                            "thresholdCond": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/thresholdCond",
+                                                "required": false,
+                                                "description": "At what level the threshold is set. Eg: Price, Quantity etc."
+                                            },
+                                            "shipInfo": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/shipInfo",
+                                                "required": false,
+                                                "description": "More information on mode of shipping, delivery, carrier etc."
+                                            },
+                                            "startDate": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/startDate",
+                                                "required": false,
+                                                "description": "Promotion start date. ISO Date Format(Example 2013-02-07T01:15:01.090Z)."
+                                            },
+                                            "endDate": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/sears/regulars/0/endDate",
+                                                "required": false,
+                                                "description": "Promotion end date. ISO Date Format(Example 2013-02-07T01:15:01.090Z)."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "kmart": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/offer/sites/kmart",
+                            "required": false,
+                            "description": "List the offers present in kmart store",
+                            "properties": {
+                                "financing": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/offer/sites/kmart/financing",
+                                    "required": false,
+                                    "description": "Lists the details/properties of the finance offers",
+                                    "properties": {
+                                        "delayMonths": {
+                                            "type": "number",
+                                            "id": "http://jsonschema.net/offer/sites/kmart/financing/delayMonths",
+                                            "required": false,
+                                            "description": "Integer value indicating the number of months till which finance offer is applicable"
+                                        },
+                                        "desc": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/offer/sites/kmart/financing/desc",
+                                            "required": false,
+                                            "description": "String value describing the finance offer"
+                                        },
+                                        "endDt": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/offer/sites/kmart/financing/endDt",
+                                            "required": false,
+                                            "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Indicates the date till which the offer is applicable"
+                                        },
+                                        "minPurchaseAmt": {
+                                            "type": "number",
+                                            "id": "http://jsonschema.net/offer/sites/kmart/financing/minPurchaseAmt",
+                                            "required": false,
+                                            "description": "Indicates the minimum Purchase Amount eligible for the finance offer"
+                                        }
+                                    }
+                                },
+                                "regulars": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/offer/sites/kmart/regulars",
+                                    "required": false,
+                                    "description": "Lists the details/properties of the regular offers",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/offer/sites/kmart/regulars/0",
+                                        "required": true,
+                                        "description": "Lists the items applicable under regular category",
+                                        "properties": {
+                                            "details": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/details",
+                                                "required": true,
+                                                "description": "Provides the details of the item"
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/title",
+                                                "required": true,
+                                                "description ": "String value indicates the title"
+                                            },
+                                            "promoId": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/promoId",
+                                                "required": false,
+                                                "description": "Promotion ID."
+                                            },
+                                            "promoType": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/promoType",
+                                                "required": false,
+                                                "description": "Type of promotion."
+                                            },
+                                            "freePromoFlag": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/freePromoFlag",
+                                                "required": false,
+                                                "description": "Indicator for free promotion."
+                                            },
+                                            "thresholdCond": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/thresholdCond",
+                                                "required": false,
+                                                "description": "At what level the threshold is set. Eg: Price, Quantity etc."
+                                            },
+                                            "shipInfo": {
+                                                "type": "boolean",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/shipInfo",
+                                                "required": false,
+                                                "description": "More information on mode of shipping, delivery, carrier etc."
+                                            },
+                                            "startDate": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/startDate",
+                                                "required": false,
+                                                "description": "Promotion start date. ISO Date Format(Example 2013-02-07T01:15:01.090Z)."
+                                            },
+                                            "endDate": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/offer/sites/kmart/regulars/0/endDate",
+                                                "required": false,
+                                                "description": "Promotion end date. ISO Date Format(Example 2013-02-07T01:15:01.090Z)."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

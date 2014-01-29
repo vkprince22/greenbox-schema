@@ -1,0 +1,446 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "assocs": {
+            "type": "object",
+            "id": "http://jsonschema.net/assocs",
+            "required": false,
+            "description": "Defines the list of associations for the item",
+            "properties": {
+                "reqAccs": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/reqAccs",
+                    "required": false,
+                    "description": "Gives the details on list of required accessories.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/reqAccs/0",
+                        "required": true,
+                        "description": "Gives the details of required accessories ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/reqAccs/0/id",
+                                "required": false,
+                                "description": "The partnumber of required accessory"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/reqAccs/0/qty",
+                                "required": false,
+                                "description": "The quantity of required accessory"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/reqAccs/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of required accessory"
+                            }
+                        }
+                    }
+                },
+                "instServ": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/instServ",
+                    "required": false,
+                    "description": "Gives the details on list of installation services.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/instServ/0",
+                        "required": true,
+                        "description": "Gives the details of installation services ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/instServ/0/id",
+                                "required": false,
+                                "description": "The partnumber of installation services"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/instServ/0/qty",
+                                "required": false,
+                                "description": "The quantity of installation services"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/instServ/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of installation services"
+                            }
+                        }
+                    }
+                },
+                "roadHazPlusAggrmt": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/roadHazPlusAggrmt",
+                    "required": false,
+                    "description": "Gives the details on list of Road Hazard Plus Agreement",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/roadHazPlusAggrmt/0",
+                        "required": true,
+                        "description": "Gives the details of Road Hazard Plus Agreement ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/roadHazPlusAggrmt/0/id",
+                                "required": false,
+                                "description": "The partnumber of Road Hazard Plus Agreement"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/roadHazPlusAggrmt/0/qty",
+                                "required": false,
+                                "description": "The quantity of Road Hazard Plus Agreement"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/roadHazPlusAggrmt/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Road Hazard Plus Agreement"
+                            }
+                        }
+                    }
+                },
+                "bal": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/bal",
+                    "required": false,
+                    "description": "Gives the details on list of Balancing",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/bal/0",
+                        "required": true,
+                        "description": "Gives the details of Balancing",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/bal/0/id",
+                                "required": false,
+                                "description": "The partnumber of Balancing"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/bal/0/qty",
+                                "required": false,
+                                "description": "The quantity of Balancing"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/bal/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Balancing"
+                            }
+                        }
+                    }
+                },
+                "valveStems": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/valveStems",
+                    "required": false,
+                    "description": "Gives the details on list of Valve Stems.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/valveStems/0",
+                        "required": true,
+                        "description": "Gives the details of Valve Stems ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/valveStems/0/id",
+                                "required": false,
+                                "description": "The partnumber of Valve Stems"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/valveStems/0/qty",
+                                "required": false,
+                                "description": "The quantity of Valve Stems"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/valveStems/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Valve Stems"
+                            }
+                        }
+                    }
+                },
+                "maintServ": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/maintServ",
+                    "required": false,
+                    "description": "Gives the details on list of Maintenance Services",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/maintServ/0",
+                        "required": true,
+                        "description": "Gives the details of Maintenance Services",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/maintServ/0/id",
+                                "required": false,
+                                "description": "The partnumber of Maintenance Services"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/maintServ/0/qty",
+                                "required": false,
+                                "description": "The quantity of Maintenance Services"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/maintServ/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Maintenance Services"
+                            }
+                        }
+                    }
+                },
+                "optAccs": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/optAccs",
+                    "required": false,
+                    "description": "Gives the details on list of optional accessories",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/optAccs/0",
+                        "required": true,
+                        "description": "Gives the details of optional accessories ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/optAccs/0/id",
+                                "required": false,
+                                "description": "The partnumber of optional accessories"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/optAccs/0/qty",
+                                "required": false,
+                                "description": "The quantity of optional accessories"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/optAccs/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of optional accessories"
+                            }
+                        }
+                    }
+                },
+                "xSell": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/xSell",
+                    "required": false,
+                    "description": "Gives the details on list of X Sell.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/xSell/0",
+                        "required": true,
+                        "description": "Gives the details of X Sell ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/xSell/0/id",
+                                "required": false,
+                                "description": "The partnumber of X Sell"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/xSell/0/qty",
+                                "required": false,
+                                "description": "The quantity of X Sell"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/reqAccs/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of X Sell"
+                            }
+                        }
+                    }
+                },
+                "linkedSwatch": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/linkedSwatch",
+                    "required": false,
+                    "description": "Gives the details on list of linked swatches also known as Pseudo variations",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/linkedSwatch/0",
+                        "required": true,
+                        "description": "Gives the details of linked swatches. Only online linked swatches will be present.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/id",
+                                "required": false,
+                                "description": "The partnumber of lined swatch"
+                            },
+                            "baseId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/baseId",
+                                "required": false,
+                                "description": "The base partnumber of linked swatch"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/qty",
+                                "required": false,
+                                "description": "The quantity of linked swatch"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of linkedSwatch"
+                            },
+                            "swatchImg": {
+                                "type": "object",
+                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg",
+                                "required": false,
+                                "description": "Swatch image details of the linkedSwatch.",
+                                "properties": {
+                                    "attrs": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs",
+                                        "required": true,
+                                        "description": "Attributes specific to swatch image",
+                                        "properties": {
+                                            "alt": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs/alt",
+                                                "required": false,
+                                                "description": "Alternate text displayed if image is not available."
+                                            },
+                                            "height": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs/height",
+                                                "required": false,
+                                                "description": "Image height."
+                                            },
+                                            "src": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs/src",
+                                                "required": true,
+                                                "description": "Image url."
+                                            },
+                                            "title": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs/title",
+                                                "required": false,
+                                                "description": "Image titile."
+                                            },
+                                            "width": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assocs/linkedSwatch/0/swatchImg/attrs/width",
+                                                "required": false,
+                                                "description": "Image width."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "prodProtecPlan": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/prodProtecPlan",
+                    "required": false,
+                    "description": "Gives the details on list of Product Protection Plan",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/prodProtecPlan/0",
+                        "required": true,
+                        "description": "Gives the details of Product Protection Plan ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/prodProtecPlan/0/id",
+                                "required": false,
+                                "description": "The partnumber of Product Protection Plan"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/prodProtecPlan/0/qty",
+                                "required": false,
+                                "description": "The quantity of Product Protection Plan"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/prodProtecPlan/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Product Protection Plan"
+                            }
+                        }
+                    }
+                },
+                "maintAgreemt": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/maintAgreemt",
+                    "required": false,
+                    "description": "Gives the details on list of Maintenance Agreement",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/maintAgreemt/0",
+                        "required": true,
+                        "description": "Gives the details of Maintenance Agreement ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/maintAgreemt/0/id",
+                                "required": false,
+                                "description": "The partnumber of Maintenance Agreement"
+                            },
+                            "qty": {
+                                "type": "number",
+                                "id": "http://jsonschema.net/assocs/maintAgreemt/0/qty",
+                                "required": false,
+                                "description": "The quantity of Maintenance Agreement"
+                            },
+                            "spinId": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/maintAgreemt/0/spinId",
+                                "required": false,
+                                "description": "The spin_id of Maintenance Agreement"
+                            }
+                        }
+                    }
+                },
+                "styleLink": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assocs/styleLink",
+                    "required": false,
+                    "description": "Gives the details on list of styleLinks",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assocs/styleLink/0",
+                        "required": true,
+                        "description": "Gives the details of styleLink ",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assocs/styleLink/0/id",
+                                "required": true,
+                                "description": "The partnumber of styleLink"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

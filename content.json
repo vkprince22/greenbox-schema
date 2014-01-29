@@ -1,0 +1,2083 @@
+{
+    "type": "object",
+    "$schema": "http://json-schema.org/draft-03/schema",
+    "id": "http://jsonschema.net",
+    "required": false,
+    "properties": {
+        "id": {
+            "type": "string",
+            "id": "http://jsonschema.net/id",
+            "required": true,
+            "description": "Product Id."
+        },
+        "name": {
+            "type": "string",
+            "id": "http://jsonschema.net/name",
+            "required": true,
+            "description": "Product title"
+        },
+        "sites": {
+            "type": "array",
+            "id": "http://jsonschema.net/sites",
+            "required": true,
+            "description": "Eligible list of site names to sell the product ",
+            "items": {
+                "type": "string",
+                "id": "http://jsonschema.net/sites/0",
+                "required": true,
+                "enum": [
+                    "mygofer",
+                    "sears",
+                    "kmart"
+                ],
+                "description": "site name. Possible values are: mygofer,sears,kmart"
+            }
+        },
+        "classifications": {
+            "type": "object",
+            "id": "http://jsonschema.net/classifications",
+            "required": false,
+            "description": "Attributes giving the product type details",
+            "properties": {
+                "catentryType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/classifications/catentryType",
+                    "required": true,
+                    "enum": [
+                        "P"
+                    ],
+                    "description": "The only allowed type is P -> Product"
+                },
+                "catentrySubType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/classifications/catentrySubType",
+                    "required": true,
+                    "enum": [
+                        "NV",
+                        "V"
+                    ],
+                    "description": "Possible types are  NV -> Non Variation, V -> Variation."
+                },
+                "enrichmentProvider": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/classifications/enrichmentProvider",
+                    "required": true,
+                    "enum": [
+                        "S",
+                        "SP",
+                        "CN",
+                        "G",
+                        "EN",
+                        "MG"
+                    ],
+                    "description": "Source of content. Possible values are S -> Spin, SP -> SellPo, CN -> Cnet, G -> Gladson,EN -> Edgenet. Value will be defaulted to SP for marketplace items and S for sears items incase it didnt come in the feed. "
+                },
+                "isMarketplace": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/classifications/isMarketplace",
+                    "required": true,
+                    "description": "Item belongs to marketplace program or not"
+                },
+                "isViewOnly": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/classifications/isViewOnly",
+                    "required": false,
+                    "description": "Is item eligible to add to cart or not. Sparsely populated."
+                },
+                "isAutomotive": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/classifications/isAutomotive",
+                    "required": false,
+                    "description": "Boolean value indicating if it is automotive item or not. Sparsely populated."
+                },
+                "iskmartPRelig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/classifications/iskmartPRelig",
+                    "required": false,
+                    "description": "Boolean value indicating if  the kmart item is PR eligible. Sparsely populated."
+                }
+            }
+        },
+        "automotive": {
+            "type": "object",
+            "id": "http://jsonschema.net/automotive",
+            "required": false,
+            "description": "Details of automotive items.",
+            "properties": {
+                "isFitmentRequired": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/automotive/isAuto",
+                    "required": true,
+                    "description": "Boolean value indicating if fitment is required."
+                },
+                "isScheduleNow": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/automotive/isScheduleNow",
+                    "required": false,
+                    "description": "Boolean value indicating if the option to schedule the auto servicing has to be displayed to the customer or not."
+                },
+                "autoType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/automotive/autoType",
+                    "required": false,
+                    "enum": [
+                        "UVD"
+                    ],
+                    "description": "Gives the automotive type. Currently, the only automotive type is UVD -> Unlimited Vendor Direct."
+                },
+                "brandCodeId": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/automotive/brandCodeId",
+                    "required": false,
+                    "description": "Used to call the fitment service API."
+                },
+                "isAuCrossFit": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/automotive/isAuCrossFit",
+                    "required": false,
+                    "description": "Boolean flag indicating whether the item can fit across different automotives."
+                }
+            }
+        },
+        "desc": {
+            "type": "array",
+            "id": "http://jsonschema.net/desc",
+            "required": true,
+            "description": "List of product description objects.",
+            "items": {
+                "type": "object",
+                "id": "http://jsonschema.net/desc/0",
+                "required": true,
+                "description": "Details of short, long and top description of the product",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/desc/0/type",
+                        "required": true,
+                        "enum": [
+                            "S",
+                            "L",
+                            "T"
+                        ],
+                        "description": "Description type. S -> Short, L -> Long and T -> Top."
+                    },
+                    "val": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/desc/0/val",
+                        "required": true,
+                        "description": "Description value"
+                    }
+                }
+            }
+        },
+        "brand": {
+            "type": "object",
+            "id": "http://jsonschema.net/brand",
+            "required": false,
+            "description": "Details of the brand",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/brand/id",
+                    "required": false,
+                    "description": "metadata id of Brand. This is for internal reference only."
+                },
+                "img": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/brand/img",
+                    "required": false,
+                    "description": "Details of brand's image",
+                    "properties": {
+                        "attrs": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/brand/img/attrs",
+                            "required": false,
+                            "description": "Attributes related to the brands image",
+                            "properties": {
+                                "alt": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/brand/img/attrs/alt",
+                                    "required": false,
+                                    "description": "Alternative text to be displayed if image is not available."
+                                },
+                                "height": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/brand/img/attrs/height",
+                                    "required": false,
+                                    "description": "Height of the image"
+                                },
+                                "src": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/brand/img/attrs/src",
+                                    "required": true,
+                                    "description": "Source url of the image"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/brand/img/attrs/title",
+                                    "required": false,
+                                    "description": "Title of the image"
+                                },
+                                "width": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/brand/img/attrs/width",
+                                    "required": false,
+                                    "description": "Width of the image"
+                                }
+                            }
+                        }
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/brand/name",
+                    "required": false,
+                    "description": "Brand's name."
+                },
+                "brandSizechartUrl": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/brand/brandSizechartUrl",
+                    "required": false,
+                    "description": "URL for the sizechart specific to a brand."
+                }
+            }
+        },
+        "matchData": {
+            "type": "object",
+            "id": "http://jsonschema.net/matchData",
+            "required": false,
+            "description": "All the data point relevant for grouping process.",
+            "properties": {
+                "upc": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/matchData/upc",
+                    "required": false,
+                    "description": "UPC code."
+                },
+                "modelNo": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/matchData/modelNo",
+                    "required": false,
+                    "description": "Manufacturer model number."
+                },
+                "brand": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/matchData/brand",
+                    "required": false,
+                    "description": "Brand's name."
+                }
+            }
+        },
+        "mfr": {
+            "type": "object",
+            "id": "http://jsonschema.net/mfr",
+            "required": false,
+            "description": "Manufacturer Details",
+            "properties": {
+                "id": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/mfr/id",
+                    "required": false,
+                    "description": "The value for Manufacturer Id. Sparsely populated."
+                },
+                "modelNo": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/mfr/modelNo",
+                    "required": false,
+                    "description": "Manufacturer model number"
+                },
+                "name": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/mfr/name",
+                    "required": false,
+                    "description": "Manufacturer name."
+                }
+            }
+        },
+        "assets": {
+            "type": "object",
+            "id": "http://jsonschema.net/assets",
+            "required": false,
+            "description": "Details of the product images, videos and attachments. Sparsely populated.",
+            "properties": {
+                "attachments": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assets/attachments",
+                    "required": false,
+                    "description": "Details of the product attachments.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assets/attachments/0",
+                        "required": true,
+                        "properties": {
+                            "name": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/attachments/0/name",
+                                "required": false,
+                                "description": "Attachment name."
+                            },
+                            "type": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/attachments/0/type",
+                                "required": false,
+                                "enum": [
+                                    "EOM",
+                                    "SOM",
+                                    "PW",
+                                    "MS",
+                                    "EG"
+                                ],
+                                "description": "Attachment type. Possible values are EOM -> English Owner Manual, SOM -> Spanish Owner Manual, PW -> Product Warranty, EG -> Energy Guide, MS -> Miscellaneous"
+                            },
+                            "lang": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/attachments/0/lang",
+                                "required": false,
+                                "description": "Language of the Attachment"
+                            },
+                            "link": {
+                                "type": "object",
+                                "id": "http://jsonschema.net/assets/attachments/0/link",
+                                "required": true,
+                                "description": "Details of the attachment hyperlink",
+                                "properties": {
+                                    "attrs": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/assets/attachments/0/link/attrs",
+                                        "required": false,
+                                        "description": "Gives the complete url and the hyperlink text.",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assets/attachments/0/link/attrs/href",
+                                                "required": true,
+                                                "description": "The complete url of the attachment."
+                                            },
+                                            "rel": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assets/attachments/0/link/attrs/rel",
+                                                "required": false,
+                                                "description": "Value governing the link target's ranking in external search engines like google. Sparsely populated"
+                                            }
+                                        }
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "id": "http://jsonschema.net/assets/attachments/0/link/body",
+                                        "required": false,
+                                        "description": "The text to be displayed as the link for attachment."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "imgs": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assets/imgs",
+                    "required": true,
+                    "description": "Details of the product images.It is an array of type and value pairs.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assets/imgs/0",
+                        "required": true,
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/imgs/0/type",
+                                "required": true,
+                                "enum": [
+                                    "P",
+                                    "A"
+                                ],
+                                "description": "Gives the type of image.Possible values are P ->Primary, A -> alt."
+                            },
+                            "vals": {
+                                "type": "array",
+                                "id": "http://jsonschema.net/assets/imgs/0/vals",
+                                "required": true,
+                                "description": "Gives the image details of the respective image type.The main image will be the first one in the list of primary images ",
+                                "items": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/assets/imgs/0/vals/0",
+                                    "required": true,
+                                    "properties": {
+                                        "img": {
+                                            "type": "object",
+                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img",
+                                            "required": true,
+                                            "description": "Img tag will have further image details within the attrs tag.",
+                                            "properties": {
+                                                "attrs": {
+                                                    "type": "object",
+                                                    "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs",
+                                                    "required": true,
+                                                    "properties": {
+                                                        "alt": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs/alt",
+                                                            "required": false,
+                                                            "description": "Alternate text displayed if image is not available"
+                                                        },
+                                                        "height": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs/height",
+                                                            "required": false,
+                                                            "description": "Image height"
+                                                        },
+                                                        "src": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs/src",
+                                                            "required": true,
+                                                            "description": "Image url."
+                                                        },
+                                                        "title": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs/title",
+                                                            "required": false,
+                                                            "description": "Image title."
+                                                        },
+                                                        "width": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/assets/imgs/0/vals/0/img/attrs/width",
+                                                            "required": false,
+                                                            "description": "Image width."
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "videos": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assets/videos",
+                    "required": false,
+                    "description": "Details of the available videos related to product.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assets/videos/0",
+                        "required": true,
+                        "description": "Properties of the video",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/videos/0/type",
+                                "required": false,
+                                "description": "Type of product video. Ex: owners manual, energy guide"
+                            },
+                            "name": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/videos/0/name",
+                                "required": false,
+                                "description": "Name of the video. Ex: Owners manual - English, Energy Guide"
+                            },
+                            "link": {
+                                "type": "object",
+                                "id": "http://jsonschema.net/assets/videos/0/link",
+                                "required": true,
+                                "description": "Details of the link for the video.",
+                                "properties": {
+                                    "attrs": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/assets/videos/0/link/attrs",
+                                        "required": false,
+                                        "description": "Video attributes giving the details of url,rel and type.",
+                                        "properties": {
+                                            "href": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assets/videos/0/link/attrs/href",
+                                                "required": true,
+                                                "description": "Url for video."
+                                            },
+                                            "rel": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assets/videos/0/link/attrs/rel",
+                                                "required": false,
+                                                "description": "Value governing the link target's ranking in external search engines like google. Sparsely populated"
+                                            },
+                                            "type": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/assets/videos/0/link/attrs/type",
+                                                "required": false,
+                                                "description": "File format of the video."
+                                            }
+                                        }
+                                    },
+                                    "body": {
+                                        "type": "string",
+                                        "id": "http://jsonschema.net/assets/videos/0/link/body",
+                                        "required": false,
+                                        "description": "Text to be displayed as the link to view the video."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "contentExtensions": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/assets/contentExtensions",
+                    "required": false,
+                    "description": "Details of the available assets from various content providers.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/assets/contentExtensions/0",
+                        "required": true,
+                        "description": "Properties of the content provider",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/contentExtensions/0/type",
+                                "required": true,
+                                "description": "Type of content. Ex: video"
+                            },
+                            "name": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/assets/contentExtensions/0/name",
+                                "required": true,
+                                "description": "Name of the content provider. Ex:SundaySky WebCollage"
+                            },
+                            "data": {
+                                "type": "array",
+                                "id": "http://jsonschema.net/assets/contentExtensions/0/data",
+                                "required": true,
+                                "description": "Details of the asset.",
+                                "items": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/assets/contentExtensions/0/data/0",
+                                    "required": true,
+                                    "description": "Properties of the asset",
+                                    "properties": {
+                                        "key": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/assets/contentExtensions/0/data/0/key",
+                                            "required": true,
+                                            "description": "Key id"
+                                        },
+                                        "val": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/assets/contentExtensions/0/data/0/val",
+                                            "required": true,
+                                            "description": "Value against the key."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "taxonomy": {
+            "type": "object",
+            "id": "http://jsonschema.net/taxonomy",
+            "required": true,
+            "description": "Details of master, store and web hierarchies of the product.",
+            "properties": {
+                "master": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/taxonomy/master",
+                    "required": true,
+                    "description": "Master hierarchy details",
+                    "properties": {
+                        "hierarchy": {
+                            "type": "array",
+                            "id": "http://jsonschema.net/taxonomy/master/hierarchy",
+                            "required": true,
+                            "description": "Gives the details of different levels of the master hierarchy. A product can belong to only one master hierarchy.",
+                            "items ": {
+                                "type": "object",
+                                "id": "http://jsonschema.net/taxonomy/master/hierarchy/0",
+                                "required": true,
+                                "description": "Gives the values of id and name.",
+                                "properties": {
+                                    "id": {
+                                        "type": "number",
+                                        "id": "http://jsonschema.net/taxonomy/master/hierarchy/0/id",
+                                        "required": true,
+                                        "description": "Gives the catgroupId of Master hierarchy."
+                                    },
+                                    "spinId": {
+                                        "type": "number",
+                                        "id": "http://jsonschema.net/taxonomy/master/hierarchy/0/id",
+                                        "required": true,
+                                        "description": "Gives the metadata  identifier of the  master hierarchy starting from the highest level to the lowest level to which the product belongs to."
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "id": "http://jsonschema.net/taxonomy/master/hierarchy/0/name",
+                                        "required": true,
+                                        "description": "Gives the name of the master hierarchy for the respective id's."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "store": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/taxonomy/store",
+                    "required": false,
+                    "description": "Store hierarchy details.",
+                    "properties": {
+                        "hierarchy": {
+                            "type": "array",
+                            "id": "http://jsonschema.net/taxonomy/store/hierarchy",
+                            "required": true,
+                            "description": "Gives the details of different levels of the store hierarchy. A product can belong to only one store hierarchy.",
+                            "items": {
+                                "type": "object",
+                                "id": "http://jsonschema.net/taxonomy/store/hierarchy/0",
+                                "required": true,
+                                "description": "Gives the id and name details for each level",
+                                "properties": {
+                                    "id": {
+                                        "type": "number",
+                                        "id": "http://jsonschema.net/taxonomy/store/hierarchy/0/id",
+                                        "required": true,
+                                        "description": "Gives the catgroupId of store hierarchy"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "id": "http://jsonschema.net/taxonomy/store/hierarchy/0/name",
+                                        "required": true,
+                                        "description": "Hierarchy name for the respective hierarchy id's."
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "web": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/taxonomy/web",
+                    "required": true,
+                    "description": "Web hierarchy details.",
+                    "properties": {
+                        "sites": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/taxonomy/web/sites",
+                            "required": true,
+                            "description": "List of sites and their web hierarchy details.",
+                            "properties": {
+                                "mygofer": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/taxonomy/web/sites/mygofer",
+                                    "required": false,
+                                    "description": "A product can belong to more than one web hierarchy in mygofer store.  Hierarchies tag gives details of id and name of all the levels for each hierarchy in mygofer store. ",
+                                    "properties": {
+                                        "hierarchies": {
+                                            "type": "array",
+                                            "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies",
+                                            "required": true,
+                                            "description": "List of mygofer web hierarchies to which the product belongs to.",
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies/0",
+                                                "required": true,
+                                                "description": "Details of each web hierarchy. The primary hierarchy will be the first one in the array.",
+                                                "properties": {
+                                                    "specificHierarchy": {
+                                                        "type": "array",
+                                                        "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies/0/specificHierarchy",
+                                                        "required": true,
+                                                        "description": "List of levels for each hierarchy. ",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies/0/specificHierarchy/0",
+                                                            "required": true,
+                                                            "description": "Details of id and name for each level",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies/0/specificHierarchy/0/id",
+                                                                    "required": true,
+                                                                    "description": "CatgroupId of the  web hierarchy"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/mygofer/hierarchies/0/specificHierarchy/0/name",
+                                                                    "required": true,
+                                                                    "description": "Hierarchy name for the respective hierarchy id's."
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "sears": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/taxonomy/web/sites/sears",
+                                    "required": false,
+                                    "description": "A product can belong to more than one web hierarchy in sears store. Hierarchies tag gives details of id and name of all the levels for each hierarchy in sears store. ",
+                                    "properties": {
+                                        "hierarchies": {
+                                            "type": "array",
+                                            "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies",
+                                            "required": true,
+                                            "description": "List of sears web hierarchies to which the product belongs to. ",
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies/0",
+                                                "required": true,
+                                                "description": "Details of each web hierarchy. The primary hierarchy will be the first one in the array.",
+                                                "properties": {
+                                                    "specificHierarchy": {
+                                                        "type": "array",
+                                                        "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies/0/specificHierarchy",
+                                                        "required": true,
+                                                        "description": "Details of all the levels for each web hierarchy.",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies/0/specificHierarchy/0",
+                                                            "required": true,
+                                                            "description": "Details of id and name for each level.",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies/0/specificHierarchy/0/id",
+                                                                    "required": true,
+                                                                    "description": "CatgroupId of the  web hierarchy"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/sears/hierarchies/0/specificHierarchy/0/name",
+                                                                    "required": true,
+                                                                    "description": "Hierarchy name for the respective hierarchy id's."
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "kmart": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/taxonomy/web/sites/kmart",
+                                    "required": false,
+                                    "description": "A product can belong to more than one web hierarchy in kmart store.  Hierarchies tag gives details of id and name of all the levels for each hierarchy in kmart store. ",
+                                    "properties": {
+                                        "hierarchies": {
+                                            "type": "array",
+                                            "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies",
+                                            "required": true,
+                                            "description": "List of kmart web hierarchies to which the product belongs to.",
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies/0",
+                                                "required": true,
+                                                "description": "Details of each web hierarchy. The primary hierarchy will be the first one in the array.",
+                                                "properties": {
+                                                    "specificHierarchy": {
+                                                        "type": "array",
+                                                        "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies/0/specificHierarchy",
+                                                        "required": true,
+                                                        "description": "List of levels for each hierarchy. ",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies/0/specificHierarchy/0",
+                                                            "required": true,
+                                                            "description": "Details of id and name for each level",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies/0/specificHierarchy/0/id",
+                                                                    "required": true,
+                                                                    "description": "CatgroupId of the  web hierarchy"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/kmart/hierarchies/0/specificHierarchy/0/name",
+                                                                    "required": true,
+                                                                    "description": "Hierarchy name for the respective hierarchy id's."
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "searsDap": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/taxonomy/web/sites/searsDap",
+                                    "required": false,
+                                    "description": "A product can belong to more than one web hierarchy in sears DAP catalog. Hierarchies tag gives details of id and name of all the levels for each hierarchy in sears DAP.",
+                                    "properties": {
+                                        "hierarchies": {
+                                            "type": "array",
+                                            "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies",
+                                            "required": true,
+                                            "description": "List of sears web hierarchies to which the product belongs to in Sears DAP catalog.",
+                                            "items": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies/0",
+                                                "required": true,
+                                                "description": "Details of each web hierarchy. The primary hierarchy will be the first one in the array.",
+                                                "properties": {
+                                                    "specificHierarchy": {
+                                                        "type": "array",
+                                                        "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies/0/specificHierarchy",
+                                                        "required": true,
+                                                        "description": "Details of all the levels for each web hierarchy.",
+                                                        "items": {
+                                                            "type": "object",
+                                                            "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies/0/specificHierarchy/0",
+                                                            "required": true,
+                                                            "description": "Details of id and name for each level.",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "number",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies/0/specificHierarchy/0/id",
+                                                                    "required": true,
+                                                                    "description": "CatgroupId of the  web hierarchy"
+                                                                },
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "id": "http://jsonschema.net/taxonomy/web/sites/searsDap/hierarchies/0/specificHierarchy/0/name",
+                                                                    "required": true,
+                                                                    "description": "Hierarchy name for the respective hierarchy id's."
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "specs": {
+            "type": "array",
+            "id": "http://jsonschema.net/specs",
+            "required": false,
+            "description": "Gives the list of specification groups.",
+            "items": {
+                "type": "object",
+                "id": "http://jsonschema.net/specs/0",
+                "required": true,
+                "description": "Gives the group name and its list of attributes. The grpName is a sorted list.",
+                "properties": {
+                    "grpName": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/specs/0/grpName",
+                        "required": true,
+                        "description": "Gives name of the attribute."
+                    },
+                    "attrs": {
+                        "type": "array",
+                        "id": "http://jsonschema.net/specs/0/attrs",
+                        "required": true,
+                        "description": "Gives list of attributes specific to each group. The attributes are sorted by name.",
+                        "items": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/specs/0/attrs/0",
+                            "required": true,
+                            "description": "Gives details of each attribute.",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/specs/0/attrs/0/name",
+                                    "required": true,
+                                    "description": "Gives name of the attribute."
+                                },
+                                "val": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/specs/0/attrs/0/val",
+                                    "required": true,
+                                    "description": "Gives value of the attribute."
+                                },
+                                "toolTip": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/specs/0/attrs/0/toolTip",
+                                    "required": false,
+                                    "description": "Gives the text to be shown in the tool tip for the attribute."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "facets": {
+            "type": "object",
+            "id": "http://jsonschema.net/facets",
+            "required": true,
+            "description": "List of search attributes of the product for the respective sites.",
+            "properties": {
+                "sites": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/facets/sites",
+                    "required": true,
+                    "description": "List of sites",
+                    "properties": {
+                        "mygofer": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/facets/sites/mygofer",
+                            "required": false,
+                            "description": " Gives the search attributes for mygofer store.",
+                            "properties": {
+                                "static": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/mygofer/static",
+                                    "required": false,
+                                    "description": "List of static attributes.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/mygofer/static/0",
+                                        "required": true,
+                                        "description": "Name and value for each static attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/mygofer/static/0/name",
+                                                "required": true,
+                                                "description": "Attribute name."
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/mygofer/static/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynamic": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/mygofer/dynamic",
+                                    "required": false,
+                                    "description": "List of dynamic attributes. ",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/mygofer/dynamic/0",
+                                        "required": true,
+                                        "description": "Name and value for each dynamic attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/mygofer/dynamic/0/name",
+                                                "required": true,
+                                                "description": "Attribute name. Currently, the possible dynamic attributes names are: 'price'"
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/mygofer/dynamic/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "sears": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/facets/sites/sears",
+                            "required": false,
+                            "description": " Gives the search attributes for sears store.",
+                            "properties": {
+                                "static": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/sears/static",
+                                    "required": false,
+                                    "description": "List of static attributes.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/sears/static/0",
+                                        "required": true,
+                                        "description": "Name and value for each static attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/sears/static/0/name",
+                                                "required": true,
+                                                "description": "Attribute name."
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/sears/static/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynamic": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/sears/dynamic",
+                                    "required": false,
+                                    "description": "List of dynamic attributes.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/sears/dynamic/0",
+                                        "required": true,
+                                        "description": "Name and value for each dynamic attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/sears/dynamic/0/name",
+                                                "required": true,
+                                                "description": "Attribute name."
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/sears/dynamic/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "kmart": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/facets/sites/kmart",
+                            "required": false,
+                            "description": " Gives the search attributes for kmart store.",
+                            "properties": {
+                                "static": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/kmart/static",
+                                    "required": false,
+                                    "description": "List of static attributes.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/kmart/static/0",
+                                        "required": true,
+                                        "description": "Name and value for each static attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/kmart/static/0/name",
+                                                "required": true,
+                                                "description": "Attribute name."
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/kmart/static/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                },
+                                "dynamic": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/facets/sites/kmart/dynamic",
+                                    "required": false,
+                                    "description": "List of dynamic attributes. ",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/facets/sites/kmart/dynamic/0",
+                                        "required": true,
+                                        "description": "Name and value for each dynamic attribute. ",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/kmart/dynamic/0/name",
+                                                "required": true,
+                                                "description": "Attribute name. Currently, the possible dynamic attributes names are: 'price'"
+                                            },
+                                            "val": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/facets/sites/kmart/dynamic/0/val",
+                                                "required": true,
+                                                "description": "Attribute value."
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "marketplace": {
+            "type": "object",
+            "id": "http://jsonschema.net/marketplace",
+            "required": false,
+            "description": "Marketplace specific attributes.",
+            "properties": {
+                "catConfScore": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/marketplace/catConfScore",
+                    "required": false,
+                    "description": "Category confidence score indicating the correctness of the categorization."
+                },
+                "commission": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/marketplace/commission",
+                    "required": false,
+                    "description": "Commission rate.",
+                    "properties": {
+                        "defaultRate": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/commission/defaultRate",
+                            "required": false,
+                            "description": "Default commission rate to be applied when store specific commision rate is not available."
+                        },
+                        "mygofer": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/marketplace/commission/mygofer",
+                            "required": false,
+                            "description": "Details of commission rate for mygofer store.",
+                            "properties": {
+                                "rate": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/marketplace/commission/mygofer/rate",
+                                    "required": false,
+                                    "description": "Commission rate for mygofer store."
+                                }
+                            }
+                        },
+                        "sears": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/marketplace/commission/sears",
+                            "required": false,
+                            "description": "Details of commission rate for sears store.",
+                            "properties": {
+                                "rate": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/marketplace/commission/sears/rate",
+                                    "required": false,
+                                    "description": "commission rate for sears store."
+                                }
+                            }
+                        }
+                    }
+                },
+                "cpc": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/marketplace/cpc",
+                    "required": false,
+                    "description": "Details of cpc specific attributes.",
+                    "properties": {
+                        "clickCaptureLink": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink",
+                            "required": false,
+                            "description": "Details of link. Every click on this link gets captured.",
+                            "properties": {
+                                "attrs": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink/attrs",
+                                    "required": false,
+                                    "description": "Details of product's link which redirects to 3rd party system.",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink/attrs/href",
+                                            "required": false,
+                                            "description": "The url of the link"
+                                        },
+                                        "rel": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink/attrs/rel",
+                                            "required": false,
+                                            "description": "Value governing the link target's ranking in external search engines like google. Sparsely populated"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink/attrs/type",
+                                            "required": false,
+                                            "description": "The type of the url's target file."
+                                        }
+                                    }
+                                },
+                                "body": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/marketplace/cpc/clickCaptureLink/body",
+                                    "required": false,
+                                    "description": "Clickable text of the  hyperlink "
+                                }
+                            }
+                        },
+                        "clickPrice": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/cpc/clickPrice",
+                            "required": false,
+                            "description": "Price to be charged on every click of the Capture link."
+                        },
+                        "shipPrice": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/cpc/shipPrice",
+                            "required": false,
+                            "description": "Ship price for the product."
+                        },
+                        "importance": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/cpc/importance",
+                            "required": false,
+                            "description": "Gives the importance level of the product."
+                        },
+                        "itemLink": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/marketplace/cpc/itemLink",
+                            "required": false,
+                            "description": "Gives the details of the link that redirects to the third party site.",
+                            "properties": {
+                                "attrs": {
+                                    "type": "object",
+                                    "id": "http://jsonschema.net/marketplace/cpc/itemLink/attrs",
+                                    "required": false,
+                                    "description": "Details of the link.",
+                                    "properties": {
+                                        "href": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/itemLink/attrs/href",
+                                            "required": false,
+                                            "description": "url of the link."
+                                        },
+                                        "rel": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/itemLink/attrs/rel",
+                                            "required": false,
+                                            "description": "Value governing the link target's ranking in external search engines like google.Sparsely populated"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "id": "http://jsonschema.net/marketplace/cpc/itemLink/attrs/type",
+                                            "required": false,
+                                            "description": "The type of the url's target file."
+                                        }
+                                    }
+                                },
+                                "body": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/marketplace/cpc/itemLink/body",
+                                    "required": false,
+                                    "description": "Clickable text of the  hyperlink."
+                                }
+                            }
+                        },
+                        "promoTxt": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/marketplace/cpc/promoTxt",
+                            "required": false,
+                            "description": "Promotion message to be displayed for the product."
+                        }
+                    }
+                },
+                "groupingId": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/marketplace/groupingId",
+                    "required": false,
+                    "description": "Id of the group which is the SIN number."
+                },
+                "isBanned": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/marketplace/isBanned",
+                    "required": false,
+                    "description": "Value indicating if the item is banned. Will be  true/false."
+                },
+                "isMatureContent": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/marketplace/isMatureContent",
+                    "required": false,
+                    "description": "Boolean value indicating if it is a mature content."
+                },
+                "pickPayFee": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/marketplace/pickPayFee",
+                    "required": false,
+                    "description": "Fee to be payed to sears after the item is picked."
+                },
+                "programType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/marketplace/programType",
+                    "required": false,
+                    "description": "Indicates whether it is FBM/FBS/CPC/DSS/SYW."
+                },
+                "countryCds": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/marketplace/countryCds",
+                    "required": false,
+                    "description": "List of country codes",
+                    "items": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/marketplace/countryCds/0",
+                        "required": true,
+                        "description": "Country Code"
+                    }
+                },
+                "sellerCnt": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/marketplace/sellerCnt",
+                    "required": false,
+                    "description": "Gives the item count in the group."
+                },
+                "seller": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/marketplace/seller",
+                    "required": false,
+                    "description": "Gives the seller details.",
+                    "properties": {
+                        "id": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/seller/id",
+                            "required": false,
+                            "description": "Gives the seller id."
+                        },
+                        "isDirectSears": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/marketplace/seller/isDirectSears",
+                            "required": false,
+                            "description": "Is transaction handled by Sears."
+                        },
+                        "name": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/marketplace/seller/name",
+                            "required": false,
+                            "description": "Gives the seller name."
+                        }
+                    }
+                },
+                "unitCost": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/marketplace/unitCost",
+                    "required": false,
+                    "description": "Details of the unit cost. This tag will be populated for DSS items only",
+                    "properties": {
+                        "price": {
+                            "type": "number",
+                            "id": "http://jsonschema.net/marketplace/unitCost/price",
+                            "required": false,
+                            "description": "UnitCost of the item"
+                        }
+                    }
+                }
+            }
+        },
+        "variants": {
+            "type": "object",
+            "id": "http://jsonschema.net/variants",
+            "required": true,
+            "description": "SKU level details.",
+            "properties": {
+                "cnt": {
+                    "type": "number",
+                    "id": "http://jsonschema.net/variants/cnt",
+                    "required": true,
+                    "description": "sku count. For non variation this value will be 1."
+                },
+                "definingAttrs": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/variants/definingAttrs",
+                    "required": false,
+                    "description": "List of defining attributes. Attributes and Attribute values will be sorted based on the sequence number coming from spin. Attributes will be sorted in descending order and values will be sorted in ascending order",
+                    "items": [
+                        {
+                            "type": "object",
+                            "id": "http://jsonschema.net/variants/definingAttrs/0",
+                            "required": false,
+                            "description": "Details of each defining attribute.",
+                            "properties": {
+                                "id": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/variants/definingAttrs/0/id",
+                                    "required": false,
+                                    "description": "metadata id. This is for internal reference only. Id will not be present for the attribute Brand."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/variants/definingAttrs/0/name",
+                                    "required": false,
+                                    "description": "Attribute name. AutoUVD items will have the attribute Brand"
+                                },
+                                "seq": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/variants/definingAttrs/0/seq",
+                                    "required": false,
+                                    "description": "Sequence number for the attribute."
+                                },
+                                "dispType": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/variants/definingAttrs/0/dispType",
+                                    "required": false,
+                                    "description": "Display type of the defining attribute. Example: ComboBox, dropDown."
+                                },
+                                "vals": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/variants/definingAttrs/0/vals",
+                                    "required": false,
+                                    "description": "List of values for the attribute.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0",
+                                        "required": false,
+                                        "description": "Details of the attribute value",
+                                        "properties": {
+                                            "id": {
+                                                "type": "number",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/id",
+                                                "required": false,
+                                                "description": "metadata id. This is for internal reference only."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/name",
+                                                "required": false,
+                                                "description": "Attribute value name.The value for Brand = <productName> <brandCodeId> <mfPartnumber>"
+                                            },
+                                            "seq": {
+                                                "type": "number",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/seq",
+                                                "required": false,
+                                                "description": "Sequence number for the attribute value."
+                                            },
+                                            "familyName": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/familyName",
+                                                "required": false,
+                                                "description": "The family name also called as trademark text."
+                                            },
+                                            "primaryImg": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg",
+                                                "required": false,
+                                                "description": "Details of primary image.",
+                                                "properties": {
+                                                    "attrs": {
+                                                        "type": "object",
+                                                        "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs",
+                                                        "required": true,
+                                                        "description": "Attributes related to primary image.",
+                                                        "properties": {
+                                                            "alt": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs/alt",
+                                                                "required": false,
+                                                                "description": "Alternate text displayed if image is not available."
+                                                            },
+                                                            "height": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs/height",
+                                                                "required": false,
+                                                                "description": "Height of the image"
+                                                            },
+                                                            "src": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs/src",
+                                                                "required": true,
+                                                                "description": "Url of the image"
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs/title",
+                                                                "required": false,
+                                                                "description": "Title of the image"
+                                                            },
+                                                            "width": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/primaryImg/attrs/width",
+                                                                "required": false,
+                                                                "description": "Width of the image"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "swatchImg": {
+                                                "type": "object",
+                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg",
+                                                "required": false,
+                                                "description": "Swatch image details",
+                                                "properties": {
+                                                    "attrs": {
+                                                        "type": "object",
+                                                        "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs",
+                                                        "required": true,
+                                                        "description": "Attributes specific to swatch image",
+                                                        "properties": {
+                                                            "alt": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs/alt",
+                                                                "required": false,
+                                                                "description": "Alternate text displayed if image is not available."
+                                                            },
+                                                            "height": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs/height",
+                                                                "required": false,
+                                                                "description": "Image height."
+                                                            },
+                                                            "src": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs/src",
+                                                                "required": true,
+                                                                "description": "Image url."
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs/title",
+                                                                "required": false,
+                                                                "description": "Image titile."
+                                                            },
+                                                            "width": {
+                                                                "type": "string",
+                                                                "id": "http://jsonschema.net/variants/definingAttrs/0/vals/0/swatchImg/attrs/width",
+                                                                "required": false,
+                                                                "description": "Image width."
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "legal": {
+            "type": "object",
+            "id": "http://jsonschema.net/legal",
+            "required": false,
+            "description": "Gives the legal compliances of the item",
+            "properties": {
+                "chokingHazards": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/legal/chokingHazards",
+                    "required": false,
+                    "description": "Defines the list of chocking Hazards in the product.",
+                    "items": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/legal/chokingHazards/0",
+                        "required": false,
+                        "description": "Defines the choking hazard items"
+                    }
+                },
+                "hazmatMaterialCd": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/legal/hazmatMaterialCd",
+                    "required": false,
+                    "description": "Gives the hazardous material code"
+                },
+                "hazmatStorageCd": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/legal/hazmatStorageCd",
+                    "required": false,
+                    "description": "Gives the details on storing procedure of hazardous materials"
+                },
+                "hazmat": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/hazmat",
+                    "required": false,
+                    "description": "Boolean value indicating if the product is hazardous or not."
+                },
+                "isCaEmmision": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/isCaEmmision",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is carbon emission law compliant."
+                },
+                "isNoWarning": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/isNoWarning",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is having no legal warning"
+                },
+                "isProp65": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/isProp65",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is Prop65 law compliance"
+                },
+                "jewelry": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/legal/jewelry",
+                    "required": false,
+                    "description": "Gives the details of jewellery items",
+                    "properties": {
+                        "disclosure": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/legal/jewelry/disclosure",
+                            "required": false,
+                            "description": "Defines the disclosure statement for the jewellery"
+                        }
+                    }
+                },
+                "limitedGeos": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/legal/limitedGeos",
+                    "required": false,
+                    "description": "Defines the list of geographical locations where the item is termed as  hazardous",
+                    "items": {
+                        "type": "string",
+                        "id": "http://jsonschema.net/legal/limitedGeos/0",
+                        "required": false,
+                        "description": "List of states where the product is termed as hazardous."
+                    }
+                },
+                "safetyWarnings": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/safetyWarnings",
+                    "required": false,
+                    "description": "Boolean value indicating if the product has the safety warnings or not."
+                },
+                "isRecalled": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/legal/isRecalled",
+                    "required": false,
+                    "description": "Boolean value determining whether the product is recalled. Sparsely populated."
+                },
+                "usDotType": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/legal/usDotType",
+                    "required": false,
+                    "description": "Gives the differnt shipping options for hazardous materials"
+                }
+            }
+        },
+        "seo": {
+            "type": "object",
+            "id": "http://jsonschema.net/seo",
+            "required": false,
+            "description": "Gives the details of Url title.",
+            "properties": {
+                "desc": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/seo/desc",
+                    "required": false,
+                    "descriptiom": "Description of the Url title."
+                },
+                "overrides": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/seo/overrides",
+                    "required": false,
+                    "description": "Gives the details of overrides ",
+                    "properties": {
+                        "desc": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/seo/overrides/desc",
+                            "required": false,
+                            "description": "Determines whether to override the url title description or not."
+                        },
+                        "title": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/seo/overrides/title",
+                            "required": false,
+                            "description": "Determines whether to override the Url title or not"
+                        },
+                        "url": {
+                            "type": "boolean",
+                            "id": "http://jsonschema.net/seo/overrides/url",
+                            "required": false,
+                            "description": "Determines whether to override the Url or not."
+                        }
+                    }
+                },
+                "title": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/seo/title",
+                    "required": false,
+                    "description": "Defines the title in the Url."
+                },
+                "url": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/seo/url",
+                    "required": true,
+                    "description": "Defines the Url displayed for the item."
+                },
+                "productAltTag": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/seo/productAltTag",
+                    "required": false,
+                    "description": "Custom alt tag for product image."
+                },
+                "featureAltTag": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/seo/featureAltTag",
+                    "required": false,
+                    "descriptio": "Custom alt tag for feature image."
+                },
+                "isRobotFollow": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/seo/isRobotFollow",
+                    "required": false,
+                    "description": "Indicates whether the page should be followed by SEO crawler."
+                },
+                "isRobotIndex": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/seo/isRobotIndex",
+                    "required": false,
+                    "description": "Indicates whether the page should be indexed in the search results for ranking purposes."
+                }
+            }
+        },
+        "grocery": {
+            "type": "object",
+            "id": "http://jsonschema.net/grocery",
+            "required": false,
+            "description": "Lists the operational attributes specific to grocery category.",
+            "properties": {
+                "isAlcohol": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/grocery/isAlcohol",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is alcoholic."
+                },
+                "isFreezing": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/grocery/isFreezing",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is freezable or not."
+                },
+                "isPerishable": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/grocery/isPerishable",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is Perishable or not."
+                },
+                "isRefrigeration": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/grocery/isRefrigeration",
+                    "required": false,
+                    "description": "Boolean value indicating if the item requires refrigeration or not."
+                },
+                "isTobacco": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/grocery/isTobacco",
+                    "required": false,
+                    "description": "Boolean value indicating if it is a Tobacco Product"
+                },
+                "nutrition": {
+                    "type": "object",
+                    "id": "http://jsonschema.net/grocery/nutrition",
+                    "required": false,
+                    "description": "List of operational attributes indicating the various nutrition contents in the item  ",
+                    "properties": {
+                        "htmlLabel": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/grocery/nutrition/htmlLabel",
+                            "required": false,
+                            "description": "htmlLabel describing the nutrition"
+                        },
+                        "ingredients": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/grocery/nutrition/ingredients",
+                            "required": false,
+                            "description": "Lists the ingredients in the item which contains the nutrition"
+                        },
+                        "warnings": {
+                            "type": "string",
+                            "id": "http://jsonschema.net/grocery/nutrition/warnings",
+                            "required": false,
+                            "description": "Lists the warnings that should be taken care while using the item"
+                        }
+                    }
+                }
+            }
+        },
+        "dispTags": {
+            "type": "object",
+            "id": "http://jsonschema.net/dispTags",
+            "required": false,
+            "description": "List of display attributes of the item",
+            "properties": {
+                "isGhkApproved": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isGhkApproved",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is approved by Ghk. Sparsely populated"
+                },
+                "isSearchSupression": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isSearchSupression",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is suppressed for sale in sears store. Sparsely populated"
+                },
+                "isSearsExclusive": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isSearsExclusive",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is exclusive for sale in sears store. Sparsely populated"
+                },
+                "isEnergyStar": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isEnergyStar",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is an energy star item. Sparsely populated"
+                },
+                "isPriceFreqModel": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isPriceFreqModel",
+                    "required": false,
+                    "description": "Boolean value indicating if the price frequency model section has to be displayed in the front end. Sparsely populated"
+                },
+                "isConfigureTech": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isConfigureTech",
+                    "required": false,
+                    "description": "Boolean value indicating if the item is a configure tech item. Sparsely populated. This data will be available from 8/7 onwards."
+                },
+                "isWaterFilterSubscriptElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isWaterFilterSubscriptElig",
+                    "required": false,
+                    "description": "Determines if the item is eligible for water filter subscription. Sparsely populated"
+                },
+                "isHotBuy": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isHotBuy",
+                    "required": false,
+                    "description": "Boolean value determining if product is hot buy. Sparsely populated"
+                },
+                "isUPPPricingRestricted": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isUPPPricingRestricted",
+                    "required": false,
+                    "description": "Determines if the item is UPPPricingRestricted. Sparsely populated"
+                },
+                "isTire": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isTire",
+                    "required": false,
+                    "description": "This will control tires-specific experiences on new PDPautomotive items."
+                },
+                "dfltQuantity": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/dispTags/dfltQuantity",
+                    "required": false,
+                    "description": "A numeric value that will override default quantity of 1 on new PDP.\nThis is not tires-specific."
+                },
+                "isGiftMsgElig": {
+                    "type": "boolean",
+                    "id": "http://jsonschema.net/dispTags/isGiftMsgElig",
+                    "required": false,
+                    "description": "Indicates whether the item is eligible for gift messaging or not."
+                }
+            }
+        },
+        "prdAggIds": {
+            "type": "object",
+            "id": "http://jsonschema.net/prdAggIds",
+            "required": false,
+            "description": "Information related to the Collection/Bundle/Outfit to which the product may belong.",
+            "properties": {
+                "collectionIds": {
+                    "type": "array",
+                    "id": "http://jsonschema.net/prdAggIds/collectionIds",
+                    "required": true,
+                    "description": "List of Collection/Bundle/Outfit ids to which the product may belong.",
+                    "items": {
+                        "type": "object",
+                        "id": "http://jsonschema.net/prdAggIds/collectionIds/0",
+                        "required": true,
+                        "description": "List of ids.",
+                        "properties": {
+                            "id": {
+                                "type": "string",
+                                "id": "http://jsonschema.net/prdAggIds/collectionIds/0/id",
+                                "required": true,
+                                "description": "Collection/Bundle/Outfit id."
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "meta": {
+            "type": "object",
+            "id": "http://jsonschema.net/meta",
+            "required": true,
+            "description": "Lists the schema details",
+            "properties": {
+                "createdTs": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/createdTs",
+                    "required": true,
+                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Created Timestamp"
+                },
+                "lastModifiedBy": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/lastModifiedBy",
+                    "required": false,
+                    "description": "Indicates the user who lastly modified"
+                },
+                "modifiedTs": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/modifiedTs",
+                    "required": false,
+                    "description": "ISO Date Format(Example 2013-02-07T01:15:01.090Z). Modified Timestamp"
+                },
+                "schemaVer": {
+                    "type": "string",
+                    "id": "http://jsonschema.net/meta/schemaVer",
+                    "required": true,
+                    "description": "Gives the complete svn path to the schema"
+                }
+            }
+        },
+        "curatedContents": {
+            "type": "array",
+            "id": "http://jsonschema.net/curatedContents",
+            "required": false,
+            "description": "Curated information on the item.",
+            "items": {
+                "type": "object",
+                "id": "http://jsonschema.net/curatedContents/0",
+                "required": true,
+                "description": "Curated data properties.",
+                "properties": {
+                    "curatedGrp": {
+                        "type": "array",
+                        "id": "http://jsonschema.net/curatedContents/0/curatedGrp",
+                        "required": false,
+                        "description": "Curated group info.",
+                        "items": {
+                            "type": "object",
+                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0",
+                            "required": true,
+                            "description": "Curated group properties.",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/type",
+                                    "required": false,
+                                    "description": "Mainly refers to the type like text, image etc."
+                                },
+                                "rank": {
+                                    "type": "number",
+                                    "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/rank",
+                                    "required": false,
+                                    "description": "Determines the sequence."
+                                },
+                                "name": {
+                                    "type": "string",
+                                    "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/name",
+                                    "required": false,
+                                    "description": "Curated content name."
+                                },
+                                "content": {
+                                    "type": "array",
+                                    "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content",
+                                    "required": false,
+                                    "description": "More details on the content.",
+                                    "items": {
+                                        "type": "object",
+                                        "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0",
+                                        "required": true,
+                                        "description": "Curated content properties.",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/type",
+                                                "required": false,
+                                                "description": "Types like asset(images), copy(texts) etc."
+                                            },
+                                            "name": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/name",
+                                                "required": false,
+                                                "description": "Name."
+                                            },
+                                            "column": {
+                                                "type": "number",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/column",
+                                                "required": false,
+                                                "description": "Positioning column number."
+                                            },
+                                            "row": {
+                                                "type": "number",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/row",
+                                                "required": false,
+                                                "description": "Positioning row number."
+                                            },
+                                            "data": {
+                                                "type": "string",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/data",
+                                                "required": false,
+                                                "description": "Descriptive data."
+                                            },
+                                            "asset": {
+                                                "type": "array",
+                                                "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset",
+                                                "required": false,
+                                                "description": "Data on assets like images.",
+                                                "items": {
+                                                    "type": "object",
+                                                    "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0",
+                                                    "required": true,
+                                                    "description": "Details of assets.",
+                                                    "properties": {
+                                                        "type": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0/type",
+                                                            "enum": [
+                                                                "PRODUCT_IMAGE",
+                                                                "FEATURE_IMAGE",
+                                                                "SWATCH_IMAGE",
+                                                                "PRODUCT_VIDEO",
+                                                                "ENERGY_GUIDE",
+                                                                "PRODUCT_WARRANTY",
+                                                                "SPANISH_WARRANTY",
+                                                                "ENGLISH_OWNER_MANUAL",
+                                                                "SPANISH_OWNER_MANUAL",
+                                                                "REBATES",
+                                                                "MISCELLANEOUS",
+                                                                "360-VIDEO"
+                                                            ],
+                                                            "required": false,
+                                                            "description": "Type of image."
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0/name",
+                                                            "required": false,
+                                                            "description": "Name of image."
+                                                        },
+                                                        "url": {
+                                                            "type": "string",
+                                                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0/url",
+                                                            "required": false,
+                                                            "description": "Image url."
+                                                        },
+                                                        "height": {
+                                                            "type": "number",
+                                                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0/height",
+                                                            "required": false,
+                                                            "description": "Image height."
+                                                        },
+                                                        "width": {
+                                                            "type": "number",
+                                                            "id": "http://jsonschema.net/curatedContents/0/curatedGrp/0/content/0/asset/0/width",
+                                                            "required": false,
+                                                            "description": "Image width."
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
